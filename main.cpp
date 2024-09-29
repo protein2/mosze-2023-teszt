@@ -4,29 +4,30 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS];  // N_ELEMENTS név helyett NELEMENTS
-    std::cout << '1-100 ertekek duplazasa';
+    int *b = new int[N_ELEMENTS];
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
 
-    for (int i = 0;)  //  hiányzik a feltétel és az inkrementálás
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        b[i] = i * 2;
+        b[i] = (i + 1) * 2;
     }
 
-    for (int i = 0; i; i++)  // Rossz feltetel lett megadva, igy sosem fog lefutni
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        std::cout << "Ertek:";
+        std::cout << "Ertek: " << b[i] << std::endl;
     }
 
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag;
 
-    for (int i = 0; i < N_ELEMENTS, i++)  // Vesszõ helyett pontosvesszõt kell hasznalni
+    int atlag = 0;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
         atlag += b[i];
     }
 
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
+
+    delete[] b;
     return 0;
-    // b nevezetu pointer nem kerult torlesre -> memoria szivargas
 }
